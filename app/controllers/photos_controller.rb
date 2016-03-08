@@ -4,6 +4,11 @@ class PhotosController < ApplicationController
   end
 
   def show
+    set_photo
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
@@ -12,4 +17,9 @@ class PhotosController < ApplicationController
   def new
   end
 
+  private
+
+    def set_photo
+      @photo = Photo.find params[:id]
+    end
 end

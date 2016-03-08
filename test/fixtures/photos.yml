@@ -2,22 +2,22 @@
 
 one:
   author_id: 1
-  title: MyString
-  description: MyString
+  title: Uploaded by user 1
+  description: The description of photo 1
   picture: MyString
   url: MyString
-  tags: MyString
-  votes_up: 
+  tags: jokes,fresh
+  votes_up:
   votes_down: 1
   created_at: 2016-03-08 18:13:58
 
 two:
-  author_id: 1
-  title: MyString
-  description: MyString
+  author_id: 2
+  title: User 2 uploaded this photo
+  description: This photo was uploaded by user 2
   picture: MyString
   url: MyString
-  tags: MyString
-  votes_up: 
+  tags: funny,new
+  votes_up:
   votes_down: 1
-  created_at: 2016-03-08 18:13:58
+  created_at: 2016-03-08 18:14:58
