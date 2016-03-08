@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @posts = Post.all
+    @photos = Photo.all
   end
 
   # GET /photos/1
@@ -14,6 +14,7 @@ class PhotosController < ApplicationController
   end
 
   def new
+    @photo = Photo.new
   end
 
   # GET /photos/1/edit
@@ -23,12 +24,12 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Post.new(post_params)
+    @photo = Photo.new(photo_params)
 
     respond_to do |format|
       if @photo.save
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
@@ -42,7 +43,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.update(post_params)
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+        format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
         format.json { render json: @photo.errors, status: :unprocessable_entity }

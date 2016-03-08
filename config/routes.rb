@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
 
-  root 'photos#new'
+  root 'photos#index'
 end

@@ -1,1 +1,8 @@
-=@post.title
+%figure
+  =image_tag @photo.url
+  %figcaption
+    =@photo.title
+
+%br
+
+=link_to "Back", photos_url
