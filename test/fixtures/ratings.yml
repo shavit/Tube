@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  object_name: MyString
+  object_id: 1
+  user_id: 1
+  rank: 1
+  created_at: 2016-03-09 17:23:12
+
+two:
+  object_name: MyString
+  object_id: 1
+  user_id: 1
+  rank: 1
+  created_at: 2016-03-09 17:23:12

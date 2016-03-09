@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308161358) do
+ActiveRecord::Schema.define(version: 20160309152312) do
 
   create_table "photos", force: :cascade do |t|
     t.integer  "author_id"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20160308161358) do
     t.string   "tags"
     t.integer  "votes_up"
     t.integer  "votes_down"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.string   "object_name"
+    t.integer  "object_id"
+    t.integer  "user_id"
+    t.integer  "rank"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
