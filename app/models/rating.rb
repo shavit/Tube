@@ -2,7 +2,7 @@ class Rating < ApplicationRecord
 
   belongs_to :rated, polymorphic: true
 
-  validate :user_has_voted_only_once
+  validate :user_has_voted_only_once, on: :create
 
   # validate that user can votes only once per single object
   def user_has_voted_only_once
