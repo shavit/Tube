@@ -19,7 +19,7 @@ class Photo < ApplicationRecord
     object_id: id,
     user_id: user_id)
     rating.rank = -1
-    
+
     rating.save
   end
 
