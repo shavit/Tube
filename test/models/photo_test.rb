@@ -7,8 +7,9 @@ class PhotoTest < ActiveSupport::TestCase
 
   test "can vote up a photo" do
     photo = photos(:one)
-    user_id = 1
-    assert photo.upvote(user_id)
-    assert photo.downvote(user_id)
+    user = users(:one)
+    
+    assert photo.upvote(user.id)
+    assert photo.downvote(user.id)
   end
 end
