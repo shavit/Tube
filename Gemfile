@@ -53,4 +53,4 @@ gem 'carrierwave'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise', branch: :master
