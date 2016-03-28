@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318101836) do
+ActiveRecord::Schema.define(version: 20160328070702) do
 
   create_table "photos", force: :cascade do |t|
     t.integer  "author_id"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20160318101836) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "picture"
+    t.string   "description"
+    t.string   "gender"
+    t.datetime "birth_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
   create_table "ratings", force: :cascade do |t|
     t.string   "object_name"
     t.integer  "object_id"
@@ -34,6 +46,21 @@ ActiveRecord::Schema.define(version: 20160318101836) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.string   "room_type"
+    t.string   "name"
+    t.string   "description"
+    t.string   "picture"
+    t.integer  "participants_number"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "rooms", ["participants_number"], name: "index_rooms_on_participants_number"
+  add_index "rooms", ["profile_id"], name: "index_rooms_on_profile_id"
+  add_index "rooms", ["room_type"], name: "index_rooms_on_room_type"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
