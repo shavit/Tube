@@ -1,4 +1,4 @@
 class Room < ApplicationRecord
-  has_one :profile
+  belongs_to :profile
   has_many :viewers
 end
