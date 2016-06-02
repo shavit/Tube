@@ -1,0 +1,18 @@
+%h1=@video.title
+%div
+  %dl
+    %dt Categories
+    %dd=@video.categories
+    %dt Tags
+    %dd=@video.tags
+    %dt Views
+    %dd=@video.views
+    %dt Upvotes
+    %dd=@video.upvotes
+
+%h2 Related videos
+%ul
+  -@related_videos.each do |video|
+    =link_to video do
+      %div
+        %span=video.title
