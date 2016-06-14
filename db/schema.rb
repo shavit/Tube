@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160318101836) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "photos", force: :cascade do |t|
     t.integer  "author_id"
     t.string   "title"
@@ -57,9 +60,37 @@ ActiveRecord::Schema.define(version: 20160318101836) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+
+  create_table "videos", force: :cascade do |t|
+    t.integer "rank",                    default: 0,                            null: false
+    t.integer "upvotes",                 default: 0,                            null: false
+    t.integer "downvotes",               default: 0,                            null: false
+    t.string  "source_name", limit: 20,                                         null: false
+    t.integer "duration",                default: 0,                            null: false
+    t.integer "views",                   default: 0,                            null: false
+    t.string  "username",    limit: 255,                                        null: false
+    t.string  "pornstars",   limit: 255,                                        null: false
+    t.string  "categories",  limit: 255,                                        null: false
+    t.text    "tags",                                                           null: false
+    t.string  "title",       limit: 255,                                        null: false
+    t.string  "description", limit: 255,                                        null: false
+    t.string  "picture",     limit: 255,                                        null: false
+    t.text    "pictures",                                                       null: false
+    t.text    "embed_code",                                                     null: false
+    t.date    "created_at",              default: -> { "('now'::text)::date" }, null: false
+    t.date    "updated_at",              default: -> { "('now'::text)::date" }, null: false
+  end
+
+  add_index "videos", ["categories"], name: "videos_categories_index", where: "(categories IS NOT NULL)", using: :btree
+  add_index "videos", ["downvotes"], name: "videos_downvotes_index", where: "(downvotes > 20)", using: :btree
+  add_index "videos", ["duration"], name: "videos_duration_index", where: "(duration > 360)", using: :btree
+  add_index "videos", ["rank"], name: "videos_rank_index", where: "(rank > 10)", using: :btree
+  add_index "videos", ["tags"], name: "videos_tags_index", where: "(tags IS NOT NULL)", using: :btree
+  add_index "videos", ["upvotes"], name: "videos_upvotes_index", where: "(upvotes > 20)", using: :btree
+  add_index "videos", ["views"], name: "videos_views_index", where: "(views > 10)", using: :btree
 
 end
