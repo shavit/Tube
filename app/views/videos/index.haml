@@ -1,4 +1,6 @@
 %ul
   -@videos.each do |video|
     %li
-      =link_to video.title, video
+      =link_to video do
+        %div
+          %span=video.title
