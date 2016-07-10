@@ -10,7 +10,7 @@ class VideosController < ApplicationController
   # GET /videos/:id.json
   def show
     @video = Video.find(params[:id])
-    @related_videos = Video.all.limit(24)
+    @related_videos = @video.related
   end
 
 end
